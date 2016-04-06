@@ -14,7 +14,7 @@ faceCascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv/2.4.12_2/share/Ope
 #image2gray
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 font = cv2.FONT_HERSHEY_SIMPLEX
-faces = faceCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=8, minSize=(80, 80), flags = cv2.CASCADE_SCALE_IMAGE)
+faces = faceCascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=3, minSize=(20, 20), flags = cv2.CASCADE_SCALE_IMAGE)
 #faces = faceCascade.detectMultiScale(gray, 1.3, 5)
 #eyes = eyeCascade.detectMultiScale(gray)
 #print faces
