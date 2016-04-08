@@ -32,11 +32,14 @@ plt.imshow(cv2.cvtColor(image,cv2.COLOR_RGB2BGR))
 import imutils
 
 camera = cv2.VideoCapture(0)
+fgbg = cv2.BackgroundSubtractorMOG()
+
 # keep looping
 while True:
     # grab the current frame
     (grabbed, frame) = camera.read()
- 
+    # get rid of background
+    fgmask = fgbg.apply(frame)
     # resize the frame, blur it, and convert it to the HSV
     # color space
     frame = imutils.resize(frame, width=600)
@@ -52,7 +55,7 @@ while True:
 
     # show the frame to our screen
     cv2.imshow("Frame", frame)
- 
+    cv2.imshow("Fgmask", fgmask)
     # if the 'q' key is pressed, stop the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
