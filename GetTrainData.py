@@ -20,7 +20,7 @@ def store_raw_images():
 		# watch
     neg_images_link = 'http://image-net.org/api/text/imagenet.synset.geturls?wnid=n02708433'
     file_path = 'pos'
-    img_size = (50, 50)
+    img_size = (100, 100)
    
     # neg_image_urls = urllib2.urlopen(neg_images_link).read().decode()
     neg_image_urls = urllib.request.urlopen(neg_images_link).read() 
@@ -43,6 +43,7 @@ def store_raw_images():
             res = cv2.matchTemplate(resized_image,template,cv2.TM_CCOEFF_NORMED)
             threshold = 0.8
             if(res < threshold):
+            	print pic_num
             	pic_num += 1
             
         except Exception as e:
@@ -55,7 +56,7 @@ def create_pos_n_neg(file):
         for img in os.listdir(file_type):
 
             if file_type == 'pos':
-                line = file_type+'/'+img+' 1 0 0 50 50\n'
+                line = file_type+'/'+img+' 1 0 0 100 100\n'
                 with open('info.dat','a') as f:
                     f.write(line)
             elif file_type == 'neg':

@@ -64,7 +64,9 @@ while(1):
    
 
     k = cv2.waitKey(5) & 0xFF
+
     if k == 27:
+        cv2.imwrite("edges.jpg",edges)
         break
 cap.release()
 
